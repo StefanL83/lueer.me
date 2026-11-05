@@ -1,0 +1,10 @@
+# Einheitliche Zeilenenden im Repository
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Binärdateien
+*.pdf binary
+*.jpg binary
+*.png binary
+*.webp binary
+*.woff2 binary

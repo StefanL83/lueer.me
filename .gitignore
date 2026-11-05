@@ -1,0 +1,21 @@
+# Quelldateien des Lebenslaufs (enthalten Telefonnummer/Adresse) – niemals einchecken
+*.docx
+*.odt
+Master_CV_*
+
+# Lokale Arbeitsdateien
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Geheimnisse
+.env
+.env.*
+*.pem
+*.key
