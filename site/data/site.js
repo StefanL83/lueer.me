@@ -12,7 +12,9 @@ window.SITE = {
   /* Kennzahlen im Hero (Quelle: Lebenslauf) */
   kennzahlen: [
     { wert: "20+", label: "Jahre internationaler technischer B2B-Vertrieb" },
-    { wert: "≈ 200 Mio. €", label: "Umsatz- und Ergebnis­verantwortung" }
+    { wert: "≈ 200 Mio. €", label: "Umsatz- und Ergebnis­verantwortung" },
+    { wert: "10+", label: "Jahre Key-Account-Management" },
+    { wert: "≈ 8", label: "Mitarbeitende fachlich und disziplinarisch geführt" }
   ],
 
   /* Profiltext der Homepage (hat Vorrang vor dem Profiltext aus dem PDF).
@@ -35,6 +37,18 @@ window.SITE = {
   ausbildungStatus: { "KI in Unternehmen": "abgeschlossen" },
 
   zusatzStationen: [
+    {
+      titel: "KI-Weiterbildung",
+      organisation: "Business Trends Academy BTA GmbH",
+      zeitraum: "08/2026 – 11/2026",
+      alle: true,
+      aufgaben: [
+        "KI-gestütztes Changemanagement (08/2026 – 09/2026)",
+        "KI Consultant (09/2026 – 10/2026)",
+        "KI in Unternehmen: Strategische Anwendung und Prozessintegration (10/2026 – 11/2026)"
+      ],
+      highlights: []
+    },
     {
       titel: "Berufliche Neuorientierung",
       organisation: "",

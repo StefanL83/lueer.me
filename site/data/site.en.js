@@ -9,7 +9,9 @@ window.SITE_EN = {
 
   kennzahlen: [
     { wert: "20+", label: "years of international technical B2B sales" },
-    { wert: "≈ €200m", label: "revenue and earnings responsibility" }
+    { wert: "≈ €200m", label: "revenue and earnings responsibility" },
+    { wert: "10+", label: "years of key account management" },
+    { wert: "≈ 8", label: "employees led (functional and disciplinary)" }
   ],
 
   profil: [
@@ -23,6 +25,18 @@ window.SITE_EN = {
   ausbildungStatus: { "AI in Business": "completed" },
 
   zusatzStationen: [
+    {
+      titel: "AI training",
+      organisation: "Business Trends Academy BTA GmbH",
+      zeitraum: "08/2026 – 11/2026",
+      alle: true,
+      aufgaben: [
+        "AI-Driven Change Management (08/2026 – 09/2026)",
+        "AI Consultant (09/2026 – 10/2026)",
+        "AI in Business: Strategic Application and Process Integration (10/2026 – 11/2026)"
+      ],
+      highlights: []
+    },
     { titel: "Career reorientation", organisation: "", zeitraum: "02/2026 – 07/2026", aufgaben: [], highlights: [] }
   ],
 

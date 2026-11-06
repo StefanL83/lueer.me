@@ -70,7 +70,7 @@
     (CV.berufserfahrung || []).concat(SITE.zusatzStationen || [])
       .sort(function (a, b) { return startKey(b.zeitraum) - startKey(a.zeitraum); })
       .forEach(function (s) {
-        var punkte = textPunkte((s.aufgaben || []).slice(0, 2)).concat(textPunkte((s.highlights || []).slice(0, 2), true));
+        var punkte = s.alle ? textPunkte(s.aufgaben) : textPunkte((s.aufgaben || []).slice(0, 2)).concat(textPunkte((s.highlights || []).slice(0, 2), true));
         var li = el("li", "tl-item" + (punkte.length ? "" : " tl-muted"));
         li.appendChild(window.Fold.create({ meta: esc(s.zeitraum), titel: s.titel, sub: s.organisation, punkte: punkte }));
         tl.appendChild(li);

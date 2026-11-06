@@ -46,8 +46,6 @@
     "wb.basis.titel": "Degree and vocational training",
     "proj.title": "Work samples",
     "proj.intro": "Click an image for details.",
-    "kontakt.title": "Let’s talk",
-    "kontakt.intro": "Whether sales organization, key account management or the responsible use of AI – I look forward to hearing from you.",
     "kontakt.mail": "Send an e-mail",
     "kontakt.show": "Show e-mail address",
     "kontakt.subject": "Contact via lueer.me",
