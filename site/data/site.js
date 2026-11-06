@@ -9,11 +9,12 @@ window.SITE = {
   schwerpunkt:
     "Internationaler B2B-Vertrieb und Teamleitung, Key-Account-Management und verantwortungsvoller Einsatz von KI.",
 
-  /* Kennzahlen im Hero (Quelle: Lebenslauf) */
+  /* Kennzahlen im Hero (Quelle: Lebenslauf).
+     wert: fester Text  –  oder  seit: "JJJJ-MM" → die Seite rechnet die vollen Jahre bis heute ("14+"). */
   kennzahlen: [
-    { wert: "20+", label: "Jahre internationaler technischer B2B-Vertrieb" },
+    { seit: "2006-06", label: "Jahre internationaler technischer B2B-Vertrieb" },
     { wert: "≈ 200 Mio. €", label: "Umsatz- und Ergebnis­verantwortung" },
-    { wert: "10+", label: "Jahre Key-Account-Management" },
+    { seit: "2012-04", label: "Jahre Key-Account-Management" },
     { wert: "≈ 8", label: "Mitarbeitende fachlich und disziplinarisch geführt" }
   ],
 

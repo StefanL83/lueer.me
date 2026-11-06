@@ -33,6 +33,13 @@
     if (Array.isArray(s)) return s.slice();
     return String(s || "").replace(/\.\s*$/, "").split(/,\s+|\s+sowie\s+/).map(function (x) { return x.trim(); }).filter(Boolean);
   }
+  /* Volle Jahre zwischen "JJJJ-MM" und heute, z. B. "14+" – wächst automatisch jedes Jahr */
+  function jahreSeit(seit) {
+    var a = /^(\d{4})-(\d{2})$/.exec(seit); if (!a) return "";
+    var now = new Date();
+    var monate = (now.getFullYear() - Number(a[1])) * 12 + (now.getMonth() + 1 - Number(a[2]));
+    return Math.max(0, Math.floor(monate / 12)) + "+";
+  }
   function startKey(z) {
     var m = /^(?:(\d{2})\/)?(\d{4})/.exec(z || "");
     return m ? Number(m[2]) * 100 + Number(m[1] || 1) : 0;
@@ -56,7 +63,7 @@
     });
     var stats = $("#stats"); stats.innerHTML = "";
     (SITE.kennzahlen || []).forEach(function (k) {
-      stats.appendChild(el("div", "stat", "<dt>" + esc(k.label) + "</dt><dd>" + esc(k.wert) + "</dd>"));
+      stats.appendChild(el("div", "stat", "<dt>" + esc(k.label) + "</dt><dd>" + esc(k.seit ? jahreSeit(k.seit) : k.wert) + "</dd>"));
     });
 
     /* Profil */

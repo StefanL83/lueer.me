@@ -8,9 +8,9 @@ window.SITE_EN = {
     "International B2B sales and team leadership, key account management and the responsible use of AI.",
 
   kennzahlen: [
-    { wert: "20+", label: "years of international technical B2B sales" },
+    { seit: "2006-06", label: "years of international technical B2B sales" },
     { wert: "≈ €200m", label: "revenue and earnings responsibility" },
-    { wert: "10+", label: "years of key account management" },
+    { seit: "2012-04", label: "years of key account management" },
     { wert: "≈ 8", label: "employees led (functional and disciplinary)" }
   ],
 
