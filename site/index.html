@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src 'none'; connect-src 'none'; manifest-src 'self'; worker-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Stefan Lüer – Internationaler B2B-Vertrieb, Key-Account-Management & KI</title>
-  <meta name="description" content="Stefan Lüer: über 20 Jahre internationaler technischer B2B-Vertrieb, Teamleitung und Key-Account-Management – verbunden mit dem verantwortungsvollen Einsatz von KI. Kompetenzen, Projekte und Werdegang.">
+  <meta name="description" content="Stefan Lüer: über 20 Jahre internationaler technischer B2B-Vertrieb, Teamleitung und Key-Account-Management – verbunden mit dem verantwortungsvollen Einsatz von KI. Werdegang, Kompetenzen, Weiterbildung und Projekte.">
   <link rel="canonical" href="https://lueer.me/">
   <meta property="og:type" content="profile">
   <meta property="og:locale" content="de_DE">
   <meta property="og:url" content="https://lueer.me/">
   <meta property="og:title" content="Stefan Lüer – Internationaler B2B-Vertrieb, Key-Account-Management & KI">
-  <meta property="og:description" content="Kompetenzen, Arbeitsnachweise und Werdegang.">
+  <meta property="og:description" content="Werdegang, Kompetenzen, Weiterbildung und Projekte.">
   <meta property="og:image" content="https://lueer.me/assets/portrait.jpg">
   <meta property="og:image:alt" content="Portrait von Stefan Lüer">
   <meta name="twitter:card" content="summary">
@@ -50,10 +50,10 @@
         </button>
         <ul id="nav-list" class="nav-list">
           <li><a href="#profil">Profil</a></li>
-          <li><a href="#kompetenzen">Kompetenzen</a></li>
-          <li><a href="#projekte">Projekte</a></li>
           <li><a href="#werdegang">Werdegang</a></li>
+          <li><a href="#kompetenzen">Kompetenzen</a></li>
           <li><a href="#weiterbildung">Weiterbildung</a></li>
+          <li><a href="#projekte">Projekte</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
@@ -73,8 +73,8 @@
           <h1 id="hero-title">Stefan Lüer</h1>
           <p class="hero-lead" data-bind="schwerpunkt"></p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projekte">
-              Arbeitsnachweise ansehen
+            <a class="btn btn-primary" href="#werdegang">
+              Werdegang ansehen
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </a>
             <a class="btn btn-ghost" href="#kontakt">
@@ -115,36 +115,8 @@
           <aside class="card" aria-labelledby="branchen-title">
             <h3 id="branchen-title" class="card-title">Branchenerfahrung</h3>
             <ul class="chips" id="branchen"></ul>
-            <h3 class="card-title mt">Kernkompetenzen</h3>
-            <ul class="check-list" id="kernkompetenzen"></ul>
           </aside>
         </div>
-      </div>
-    </section>
-
-    <!-- KOMPETENZEN -->
-    <section class="section section-alt" id="kompetenzen" aria-labelledby="komp-title">
-      <div class="container">
-        <header class="section-head">
-          <p class="section-kicker">Kompetenzen</p>
-          <h2 id="komp-title">Was ich einbringe – und wo ich gerade wachse</h2>
-          <p class="section-intro">Bestätigte Einstufung aus meinem Kompetenzprofil: <strong>Kern</strong> heißt langjährig belegt, <strong>Ergänzung</strong> heißt praktisch angewendet, <strong>Im Aufbau</strong> heißt aktuell in Weiterbildung und Projekten.</p>
-        </header>
-        <div class="filter-bar" role="group" aria-label="Kompetenzen nach Stufe filtern" id="komp-filter"></div>
-        <p class="sr-only" aria-live="polite" id="komp-status"></p>
-        <div class="komp-grid" id="komp-grid"></div>
-      </div>
-    </section>
-
-    <!-- PROJEKTE -->
-    <section class="section" id="projekte" aria-labelledby="proj-title">
-      <div class="container">
-        <header class="section-head">
-          <p class="section-kicker">Arbeitsnachweise</p>
-          <h2 id="proj-title">Projekte, die zeigen, wie ich arbeite</h2>
-          <p class="section-intro">Von der Problemdefinition über Anforderungen und Prüflogik bis zum testbaren Prototyp.</p>
-        </header>
-        <div id="projekte-liste" class="projekte"></div>
       </div>
     </section>
 
@@ -159,26 +131,37 @@
       </div>
     </section>
 
+    <!-- KOMPETENZEN -->
+    <section class="section" id="kompetenzen" aria-labelledby="komp-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Kompetenzen</p>
+          <h2 id="komp-title">Was ich einbringe</h2>
+        </header>
+        <div class="fold-grid" id="komp-grid"></div>
+      </div>
+    </section>
+
     <!-- WEITERBILDUNG -->
-    <section class="section" id="weiterbildung" aria-labelledby="wb-title">
+    <section class="section section-alt" id="weiterbildung" aria-labelledby="wb-title">
       <div class="container">
         <header class="section-head">
           <p class="section-kicker">Aus- und Weiterbildung</p>
-          <h2 id="wb-title">Ausbildung, Studium und KI-Weiterbildung</h2>
+          <h2 id="wb-title">KI-Weiterbildung, Studium und Ausbildung</h2>
         </header>
-        <div class="edu-grid">
-          <ol class="edu-list" id="ausbildung"></ol>
-          <div class="side-stack">
-            <section class="card" aria-labelledby="meth-title">
-              <h3 id="meth-title" class="card-title">Methoden, Systeme & Sprachen</h3>
-              <dl class="meth-list" id="methoden"></dl>
-            </section>
-            <section class="card" aria-labelledby="st-title">
-              <h3 id="st-title" class="card-title">Persönliche Stärken</h3>
-              <ul class="check-list" id="staerken"></ul>
-            </section>
-          </div>
-        </div>
+        <ol class="fold-list" id="ausbildung"></ol>
+      </div>
+    </section>
+
+    <!-- PROJEKTE -->
+    <section class="section" id="projekte" aria-labelledby="proj-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Projekte</p>
+          <h2 id="proj-title">Arbeitsnachweise</h2>
+          <p class="section-intro">Bild anklicken für Details und Demo.</p>
+        </header>
+        <ul class="shots" id="projekte-liste"></ul>
       </div>
     </section>
 
@@ -222,6 +205,7 @@
   <script src="data/cv.js"></script>
   <script src="data/site.js"></script>
   <script src="js/mail.js"></script>
+  <script src="js/theme-toggle.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

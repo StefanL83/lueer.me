@@ -11,7 +11,6 @@ Prüft:
   7. Keine Dokumente/Archive/Schlüssel im Veröffentlichungsordner (z. B. Lebenslauf-PDF, .env)
   8. Hauptseiten: CSP ohne 'unsafe-inline'/'unsafe-eval', Referrer-Policy gesetzt
   9. security.txt vorhanden und nicht (bald) abgelaufen
- 10. Ist eine Google-Sheets-URL eingetragen, erlaubt die CSP (connect-src) genau diese Quelle
 
 Nutzung:  python tools/check_site.py      (Exit-Code 1 bei Fehlern)
 """
@@ -97,17 +96,6 @@ else:
         errors.append("security.txt: Feld 'Expires' fehlt")
     elif dt.date.fromisoformat(m.group(1)) - dt.date.today() < dt.timedelta(days=30):
         errors.append(f"security.txt: läuft am {m.group(1)} ab – Datum um ein Jahr verlängern")
-
-# Google-Sheets-Anbindung und CSP müssen zusammenpassen
-site_js = (SITE / "data" / "site.js").read_text(encoding="utf-8")
-sheet = re.search(r"""sheetCsvUrl\s*:\s*["'](https://[^"']+)["']""", site_js)
-index_csp = re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"', (SITE / "index.html").read_text(encoding="utf-8"))
-if sheet and index_csp:
-    origin = "https://" + urlparse(sheet.group(1)).netloc
-    connect = re.search(r"connect-src([^;]*)", index_csp.group(1))
-    if not connect or origin not in connect.group(1).split():
-        errors.append(f"index.html: sheetCsvUrl gesetzt, aber CSP connect-src erlaubt {origin} nicht "
-                      "(zusätzlich https://*.googleusercontent.com für die Weiterleitung eintragen)")
 
 if errors:
     print("PRÜFUNG FEHLGESCHLAGEN:")

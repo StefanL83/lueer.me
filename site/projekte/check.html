@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'; connect-src 'none'; worker-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>CHECK! – KI-gestützte Faktenprüfung · Projekt von Stefan Lüer</title>
+  <meta name="description" content="CHECK!: KI-gestützte Faktenprüfung mit Quellenabgleich, Zweitprüfung und Goldset-Messung. Produktverantwortung, Prüflogik und Qualitätssicherung: Stefan Lüer.">
+  <link rel="canonical" href="https://lueer.me/projekte/check.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://lueer.me/projekte/check.html">
+  <meta property="og:title" content="CHECK! – KI-gestützte Faktenprüfung">
+  <meta property="og:description" content="Vom Produktkonzept zum gemessenen Prototyp.">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/theme-init.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="Stefan Lüer – zur Startseite">
+        <span class="brand-mark" aria-hidden="true">SL</span>
+        <span class="brand-name">Stefan Lüer</span>
+      </a>
+      <a class="back-link" href="../#projekte">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Alle Projekte
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Farbschema umschalten">
+        <svg class="icon icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="projekt-page" tabindex="-1">
+    <div class="container">
+      <div class="projekt-meta">
+        <span class="badge badge-status">Prototyp · Pilotbetrieb</span>
+        <span class="badge">seit 2026</span>
+        <span class="badge">Stand 05.11.2026</span>
+      </div>
+      <h1>CHECK! – KI-gestützte Faktenprüfung</h1>
+      <p class="projekt-sub">Vom Produktkonzept zum gemessenen Prototyp: Aussagen aus Politik, Medien und Alltag werden recherchiert, mit Quellen abgeglichen und nachvollziehbar eingeordnet.</p>
+      <p class="projekt-rolle"><strong>Meine Rolle:</strong> Produktverantwortung, Anforderungen, Prüflogik, Qualitätssicherung und KI-gestützte Umsetzung.</p>
+
+      <h2>Ausgangslage</h2>
+      <p class="prose-sm">Behauptungen sollen schnell, nachvollziehbar und mit belastbaren Quellen geprüft werden – ohne dass ein Sprachmodell ungeprüft „Wahrheit“ verkündet. Im Zweifel ist ein ehrliches „Unklar“ besser als ein falsches „Belegt“.</p>
+
+      <div class="projekt-cols">
+        <section aria-labelledby="vorgehen-title">
+          <h2 id="vorgehen-title">Vorgehen</h2>
+          <ul class="bullets">
+            <li>Produktkonzept, Markenauftritt und UX mit fünf Bewertungsstufen: Belegt, Falsch, Irreführend, Unklar, Nicht überprüfbar</li>
+            <li>Prüfkette: Recherche mit Websuche, wörtlicher Abgleich jeder Fundstelle mit der Quelle, unabhängige Zweitprüfung mit Blick auf Bedeutungsfallen</li>
+            <li>Urteil nur bei ausreichender Evidenz, sonst „Unklar“ (fail-closed); „Stark“ nur für Quellen aus einem geprüften Register</li>
+            <li>Amtliche Statistik direkt aus GENESIS-Online (Destatis) statt aus älteren Pressemitteilungen</li>
+            <li>Quellensicherung über archive.org, Kostendeckel mit Tageslimit, Rückmeldefunktion und Chat-Assistent</li>
+            <li>Unabhängiges Architektur-Review durch eine Zweit-KI</li>
+          </ul>
+        </section>
+        <section aria-labelledby="ergebnis-title">
+          <h2 id="ergebnis-title">Ergebnis</h2>
+          <ul class="bullets">
+            <li>Goldset mit 100 Testaussagen und festgelegten Soll-Urteilen; jeder Entwicklungsschritt wird in bezahlten Messläufen gegen dieses Set geprüft</li>
+            <li>Letzter Messlauf: 3 von 100 Urteilen falsch-sicher – das System entscheidet im Zweifel bewusst „Unklar“</li>
+            <li>Nächster Schritt: weniger übervorsichtige Urteile, ohne die Fehlerquote zu erhöhen</li>
+            <li>Neue Oberfläche in React und TypeScript, Pilotbetrieb in der Cloud</li>
+          </ul>
+        </section>
+      </div>
+
+      <h2>Kennzahlen</h2>
+      <dl class="kpis">
+        <div><dt>Testaussagen im Goldset</dt><dd>100</dd></div>
+        <div><dt>falsch-sichere Urteile im letzten Messlauf</dt><dd>3 / 100</dd></div>
+        <div><dt>automatisierte Tests</dt><dd>≈ 290</dd></div>
+        <div><dt>KI-Kosten je Prüfung (Schätzung)</dt><dd>≈ 0,02 $</dd></div>
+      </dl>
+
+      <h2>Einblicke</h2>
+      <ul class="gallery">
+        <li><figure>
+          <img src="../assets/projekte/check-start.webp" width="640" height="1139" loading="lazy" decoding="async" alt="CHECK!-Startseite: Eingabefeld für eine Aussage, einen Text oder einen Link">
+          <figcaption>Eingabe: Aussage, Text oder Link</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="../assets/projekte/check-falsch.webp" width="640" height="1139" loading="lazy" decoding="async" alt="CHECK!-Ergebnis: „Der Mount Everest liegt in Europa“ wird als „Falsch“ eingeordnet, mit Begründung und Quellenverweis">
+          <figcaption>Ergebnis „Falsch“ mit Begründung und Quelle</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="../assets/projekte/check-irrefuehrend.webp" width="640" height="1139" loading="lazy" decoding="async" alt="CHECK!-Ergebnis: Aussage zur Arbeitslosenquote wird als „Irreführend“ eingeordnet">
+          <figcaption>Ergebnis „Irreführend“: Kern stimmt, Gesamteindruck nicht</figcaption>
+        </figure></li>
+      </ul>
+      <p class="hinweis">Screenshots aus der Offline-Demo mit Testdaten.</p>
+
+      <h2 id="demo">Demo ausprobieren</h2>
+      <p class="prose-sm">Die Demo zeigt die aktuelle Oberfläche mit vorbereiteten Testdaten. Es findet keine echte Prüfung statt und es werden keine Daten übertragen.</p>
+      <iframe class="demo-frame" src="../projects/check/index.html" title="CHECK! Offline-Demo mit Testdaten" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      <div class="demo-actions">
+        <a class="btn btn-secondary" href="../projects/check/index.html" target="_blank" rel="noopener noreferrer">Demo im Vollbild<span class="sr-only"> (öffnet in neuem Tab)</span></a>
+      </div>
+
+      <ul class="tags" aria-label="Schlagworte">
+        <li>Produktmanagement</li><li>LLM-Evaluation</li><li>Qualitätssicherung</li><li>Prompt Engineering</li><li>Prototyping</li><li>React/TypeScript</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Stefan Lüer · Privates Online-Portfolio</p>
+      <ul class="footer-links">
+        <li><a href="../datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/theme-toggle.js"></script>
+</body>
+</html>

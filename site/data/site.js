@@ -39,95 +39,54 @@ window.SITE = {
   ],
 
   /* ------------------------------------------------------------------------
-     KOMPETENZEN – Quelle: Kollektiv-Kompetenzprofil (Stand 04.11.2026),
-     von Stefan Lüer am 05.11.2026 bestätigt und für das Web freigegeben.
-     Optional live aus Google Sheets: Tabelle über „Datei › Freigeben ›
-     Im Web veröffentlichen“ als CSV veröffentlichen und die URL bei
-     sheetCsvUrl eintragen. Dann werden nur Zeilen dieser Person
-     (Personen-ID) mit „Freigabe Web? = Ja“ angezeigt; die Liste unten
-     dient als Fallback, falls das Sheet nicht erreichbar ist.
-     Stufen: "Kern" | "Ergänzung" | "Im Aufbau"  (Grenze/Nicht angegeben werden nicht gezeigt)
+     KOMPETENZEN – kompakt, ohne Bewertung. Jede Gruppe wird als aufklappbare
+     Überschrift mit ihren Punkten gezeigt (mindestens 2 Punkte je Gruppe).
+     Automatisch ergänzt: „Systeme & Sprachen“ und „Persönliche Stärken“
+     aus dem Lebenslauf (data/cv.js).
+     Quelle: Kompetenzprofil, bestätigt am 05.11.2026.
      ------------------------------------------------------------------------ */
-  kompetenzen: {
-    sheetCsvUrl: null,
-    personenId: "stefan_l",
-    liste: [
-      { id: "f3",  gruppe: "Strategie und Markt", name: "B2B-Vertrieb, Kundenentwicklung", stufe: "Kern", beleg: "Internationale Key Accounts, Vertriebssteuerung und Rahmenverträge" },
-      { id: "f1",  gruppe: "Strategie und Markt", name: "Strategie und Positionierung", stufe: "Ergänzung", beleg: "Strategische Kundenentwicklung, Positionierung und Transformationsprioritäten" },
-      { id: "f26", gruppe: "Strategie und Markt", name: "Markt- und Branchenexpertise", stufe: "Ergänzung", beleg: "B2B-Technikbranchen, Service- und Aftermarketgeschäft" },
-      { id: "f28", gruppe: "Strategie und Markt", name: "Internationale Geschäftsentwicklung", stufe: "Ergänzung", beleg: "Internationale Kunden- und Konzernstrukturen" },
-      { id: "f2",  gruppe: "Strategie und Markt", name: "Produktkonzeption, Marktreife", stufe: "Im Aufbau", beleg: "MVP-Anforderungen, UX-Konzepte und Produktbewertung" },
-
-      { id: "f4",  gruppe: "Transformation und Prozesse", name: "Führung und Teamaufbau", stufe: "Kern", beleg: "Fachliche und disziplinarische Vertriebsführung" },
-      { id: "f5",  gruppe: "Transformation und Prozesse", name: "Organisation und Change", stufe: "Ergänzung", beleg: "Change, Restrukturierung und Organisationsentwicklung" },
-      { id: "f6",  gruppe: "Transformation und Prozesse", name: "Prozessanalyse, Optimierung", stufe: "Ergänzung", beleg: "Sales Operations, Prozessoptimierung und Problemanalyse" },
-      { id: "f7",  gruppe: "Transformation und Prozesse", name: "Stakeholder und Zusammenarbeit", stufe: "Ergänzung", beleg: "Stakeholder- und Erwartungsmanagement" },
-      { id: "f8",  gruppe: "Transformation und Prozesse", name: "Strukturierte Dokumentation", stufe: "Ergänzung", beleg: "PRDs, Wissensübergaben, strukturierte Dokumentation" },
-      { id: "f32", gruppe: "Transformation und Prozesse", name: "Audits, Prüfprozesse und Governance", stufe: "Ergänzung", beleg: "QA, Quellenprüfung, Human-in-the-Loop und Freigabegates" },
-      { id: "f21", gruppe: "Transformation und Prozesse", name: "Training und Wissenstransfer", stufe: "Im Aufbau", beleg: "Lerninhalte und Wissenstransfer konzeptionell" },
-      { id: "f22", gruppe: "Transformation und Prozesse", name: "Projekt- und Programmsteuerung (PMO, Agile)", stufe: "Im Aufbau", beleg: "Iterative Projektsteuerung, Tests, Übergaben und Freigaben" },
-      { id: "f29", gruppe: "Transformation und Prozesse", name: "Requirements Engineering und Prozessmodellierung", stufe: "Im Aufbau", beleg: "Business Requirements, Akzeptanzkriterien und Prozesslogik" },
-
-      { id: "f9",  gruppe: "KI und Digitalisierung", name: "KI-Anwendungsfälle, Enablement", stufe: "Ergänzung", beleg: "Business-Problem in KI-Use-Cases übersetzen" },
-      { id: "f10", gruppe: "KI und Digitalisierung", name: "Prompting und LLM-Praxis", stufe: "Ergänzung", beleg: "Superprompts, iterative Verbesserung und Gegenprüfung" },
-      { id: "f11", gruppe: "KI und Digitalisierung", name: "KI-Qualität und Evaluation", stufe: "Ergänzung", beleg: "LLM-Evaluation, Testmatrizen, Qualitätssicherung und Evidenzprüfung" },
-      { id: "f12", gruppe: "KI und Digitalisierung", name: "Wissensmanagement", stufe: "Ergänzung", beleg: "Notion-Wissensarchitektur, Quellenregister, Versionierung" },
-      { id: "f13", gruppe: "KI und Digitalisierung", name: "Agenten und Automatisierung", stufe: "Im Aufbau", beleg: "n8n-/GitHub-Workflows und Automatisierung" },
-      { id: "f33", gruppe: "KI und Digitalisierung", name: "KI-gestützte Prototypen und Vibe Coding", stufe: "Im Aufbau", beleg: "KI-gestütztes HTML-/App-Prototyping" },
-      { id: "f34", gruppe: "KI und Digitalisierung", name: "Cloud, APIs und Tool-Integration", stufe: "Im Aufbau", beleg: "GitHub, Railway, Schnittstellen und Integrationskonzepte" },
-
-      { id: "f23", gruppe: "Zahlen und Wirtschaft", name: "KPIs und Controlling", stufe: "Kern", beleg: "Sales KPI, Forecast und Management-Reporting" },
-      { id: "f19", gruppe: "Zahlen und Wirtschaft", name: "Pricing und Preisgestaltung", stufe: "Kern", beleg: "Preis- und Vertragsverhandlung" },
-      { id: "f18", gruppe: "Zahlen und Wirtschaft", name: "Analysen: Markt, Daten", stufe: "Ergänzung", beleg: "Markt-, Wettbewerbs- und Datenanalysen" },
-      { id: "f38", gruppe: "Zahlen und Wirtschaft", name: "Budgetplanung, Forecasting und Kostensteuerung", stufe: "Ergänzung", beleg: "Kostenbewertung, KPI, Reporting und Budgetlogik" },
-      { id: "f24", gruppe: "Zahlen und Wirtschaft", name: "Business Case und ROI", stufe: "Im Aufbau", beleg: "KI-Kosten, Business Cases, Monetarisierungsmodelle" },
-      { id: "f39", gruppe: "Zahlen und Wirtschaft", name: "Finanzanalysen und Szenariomodelle", stufe: "Im Aufbau", beleg: "Benchmark-Auswertungen und Szenarien" },
-
-      { id: "f14", gruppe: "Kommunikation", name: "Visualisierung, Content", stufe: "Ergänzung", beleg: "Präsentation, Informationsdesign, Prototyp-UI" },
-      { id: "f35", gruppe: "Kommunikation", name: "PR, Presse und redaktionelle Inhalte", stufe: "Im Aufbau", beleg: "Kommunikations- und Präsentationskonzepte" },
-
-      { id: "f45", gruppe: "Fachdisziplinen", name: "Produktion, Lager und Materialwirtschaft", stufe: "Ergänzung", beleg: "Operations- und Angebots-/Auftragsprozesse" }
-    ]
-  },
+  kompetenzen: [
+    { gruppe: "Vertrieb & Markt", punkte: [
+      "B2B-Vertrieb und Kundenentwicklung",
+      "Strategisches Key- und Global-Account-Management",
+      "Preis-, Vertrags- und Konditionsverhandlungen",
+      "Internationale Geschäftsentwicklung",
+      "Strategie und Positionierung"
+    ] },
+    { gruppe: "Führung & Transformation", punkte: [
+      "Führung und Aufbau internationaler Teams",
+      "Organisation und Change Management",
+      "Prozessanalyse und -optimierung",
+      "Stakeholder- und Schnittstellenmanagement",
+      "Audits, Prüfprozesse und Governance"
+    ] },
+    { gruppe: "Zahlen & Steuerung", punkte: [
+      "KPIs, Forecasting und Management-Reporting",
+      "Umsatz-, Ergebnis- und Margensteuerung",
+      "Budgetplanung und Kostensteuerung",
+      "ABC/XYZ-Analyse und Bestandsoptimierung",
+      "Markt- und Datenanalysen"
+    ] },
+    { gruppe: "KI & Digitalisierung", punkte: [
+      "KI-Anwendungsfälle finden und einführen",
+      "Prompting und LLM-Praxis",
+      "KI-Qualität und Evaluation",
+      "Wissensmanagement",
+      "Agenten, Automatisierung und KI-gestützte Prototypen"
+    ] }
+  ],
 
   /* ------------------------------------------------------------------------
-     PROJEKTE / ARBEITSNACHWEISE – neue Projekte einfach als weiteres Objekt
-     anhängen. Felder: titel, untertitel, status, bild, bildAlt, rolle,
-     ausgangslage, vorgehen[], ergebnis[], tags[], links[{label,url,typ}]
-     typ: "primaer" | "sekundaer"
+     PROJEKTE – auf der Startseite erscheint nur der Screenshot, verlinkt auf
+     die Detailseite. Neues Projekt: Screenshot nach assets/projekte/ legen,
+     Detailseite nach dem Muster projekte/check.html anlegen, Eintrag anhängen.
      ------------------------------------------------------------------------ */
   projekte: [
     {
-      titel: "CHECK! – KI-gestützte Faktencheck-Plattform",
-      untertitel: "Vom Produktkonzept zum evaluierten Prototyp",
-      status: "Prototyp · Pilotphase",
-      zeitraum: "2026",
-      bild: "assets/check-preview.webp",
-      bildAlt: "CHECK!-App-Ansicht: geprüfte Aussage mit Bewertung „Irreführend“, Evidenzstärke und Anzahl geprüfter Quellen",
-      rolle: "Produktverantwortung, Anforderungen, Prüflogik, Qualitätssicherung und KI-gestützte Umsetzung",
-      ausgangslage:
-        "Behauptungen aus Politik und Alltag sollen schnell, nachvollziehbar und mit belastbaren Quellen geprüft werden – ohne dass ein Sprachmodell ungeprüft „Wahrheit“ verkündet.",
-      vorgehen: [
-        "Produktkonzept, Markenauftritt und UX für eine verständliche Ergebnisdarstellung mit fünf Bewertungsstufen (Belegt, Falsch, Irreführend, Unklar, Nicht prüfbar)",
-        "Evidence- & Verdict-Gate: Urteile nur bei ausreichender Evidenz, sonst Fail-closed",
-        "Quellen-Registry mit Default-deny, Zitatprüfung und Human-in-the-Loop-Freigaben",
-        "Unabhängiges Architektur-Review durch eine Zweit-KI"
-      ],
-      ergebnis: [
-        "Benchmark mit 50 label-freien Testaussagen",
-        "44 deterministische Unit-Tests für Prüf- und Sicherheitslogik",
-        "Klickbarer Demonstrator mit vorbereiteten Beispielaussagen"
-      ],
-      tags: ["Produktmanagement", "LLM-Evaluation", "Qualitätssicherung", "Prompt Engineering", "Prototyping"],
-      /* Eingebetteter Demonstrator (Offline-Demo, direkt auf der Homepage) */
-      demo: {
-        src: "projects/check/index.html",
-        titel: "CHECK! Demonstrator – Offline-Demo mit vorbereiteten Beispielaussagen",
-        hinweis: "Offline-Demo: Wählen Sie eine der vorbereiteten Beispielaussagen, um den Prüfablauf und die Ergebnisdarstellung zu erleben."
-      },
-      links: [
-        { label: "Demonstrator im Vollbild", url: "projects/check/index.html", typ: "sekundaer" }
-      ]
+      titel: "CHECK! – KI-gestützte Faktenprüfung",
+      bild: "assets/projekte/check-irrefuehrend.webp",
+      bildAlt: "CHECK!-App: Die Aussage „Die Arbeitslosenquote in Deutschland ist 2025 auf einen historischen Tiefstand gefallen“ wird als „Irreführend“ eingeordnet",
+      seite: "projekte/check.html"
     }
   ]
 };

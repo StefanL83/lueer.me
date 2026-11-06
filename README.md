@@ -1,6 +1,6 @@
 # lueer.me – Homepage Stefan Lüer
 
-Privates Online-Portfolio: Profil, Kompetenzen, Arbeitsnachweise (CHECK!-Demonstrator) und Werdegang.
+Privates Online-Portfolio: Profil, Werdegang, Kompetenzen, Weiterbildung, Projekte und Kontakt.
 Statische Website ohne Build-Schritt, veröffentlicht über GitHub Pages unter **https://lueer.me**.
 
 ## Ordnerstruktur
@@ -8,16 +8,18 @@ Statische Website ohne Build-Schritt, veröffentlicht über GitHub Pages unter *
 ```
 site/                     ← NUR dieser Ordner wird veröffentlicht
   index.html              Startseite
+  projekte/check.html     Projekt-Detailseite CHECK! (Startseite zeigt nur den Screenshot)
   datenschutz.html, 404.html, robots.txt, sitemap.xml, favicon.svg
   .well-known/security.txt  Kontakt für Sicherheitsmeldungen (jährlich verlängern)
   css/styles.css          Design-System (Farben, Typografie, Layout)
   js/app.js               rendert die Inhalte aus data/
+  js/theme-toggle.js      Hell-/Dunkel-Umschalter (alle Seiten)
   js/mail.js              E-Mail-Schutz (Adresse verschleiert)
   js/theme-init.js        Hell-/Dunkel-Modus
   data/cv.js              Lebenslauf – AUTOMATISCH aus dem PDF erzeugt
   data/site.js            Inhalte zum Pflegen (Texte, Kompetenzen, Projekte)
-  assets/                 Portrait, Screenshots, Schriften
-  projects/check/         CHECK!-Offline-Demo (eingebettet)
+  assets/                 Portrait, Schriften, assets/projekte/ = Projekt-Screenshots
+  projects/check/         CHECK!-Offline-Demo (Build des CHECK!-Frontends mit Testdaten)
 tools/
   cv_sync.py              PDF-Lebenslauf → site/data/cv.js
   check_site.py           Qualitäts- & Sicherheitsprüfung
@@ -52,8 +54,21 @@ Erwartete PDF-Struktur: Abschnitte in GROSSBUCHSTABEN, Stationen als `MM/JJJJ �
 | Kennzahlen | `kennzahlen` |
 | Profiltext (hat Vorrang vor dem PDF) | `profil` – ein Eintrag pro Absatz |
 | Zusätzliche Stationen (z. B. Berufliche Neuorientierung) | `zusatzStationen` |
-| Kompetenzen | `kompetenzen.liste` |
-| Projekte / Arbeitsnachweise | `projekte` – neues Objekt nach dem Muster von CHECK! anhängen |
+| Kompetenzen (aufklappbare Gruppen, ohne Bewertung) | `kompetenzen` – „Systeme & Sprachen“ und „Persönliche Stärken“ kommen automatisch aus dem PDF |
+| Projekte | `projekte` – Screenshot nach `assets/projekte/`, Detailseite nach Muster `projekte/check.html` anlegen, Eintrag anhängen |
+
+Werdegang und Weiterbildung werden aufklappbar dargestellt. Je Station erscheinen die ersten zwei Aufgaben und
+die ersten zwei Erfolge aus dem PDF – die wichtigsten Punkte daher im Master-CV zuerst nennen.
+
+## CHECK!-Demo aktualisieren
+
+Die Demo ist ein Build des CHECK!-Frontends im Testdaten-Modus (keine Netzwerkaufrufe):
+```powershell
+cd <check-faktencheck>\frontend
+$env:VITE_USE_MOCK_API="true"; npx vite build --base=./ --outDir <tmp>
+```
+Inhalt nach `site/projects/check/` kopieren und in `index.html` die CSP-, Referrer- und noindex-Zeilen
+aus der bisherigen Datei übernehmen (die Prüfung verlangt CSP und Referrer-Policy).
 
 Änderungen hochladen:
 ```powershell
@@ -69,20 +84,3 @@ git config core.hooksPath .githooks
 
 Jeder Stand ist in der Git-Historie auf GitHub gesichert. Ältere Stände ansehen: `git log`,
 eine Änderung rückgängig machen: `git revert <commit>` und `git push` (die Seite wird automatisch neu veröffentlicht).
-
-## Kompetenzen live aus Google Sheets (optional)
-
-Sheet über *Datei › Freigeben › Im Web veröffentlichen* als **CSV** veröffentlichen und die URL in `kompetenzen.sheetCsvUrl` eintragen.
-Angezeigt werden nur Zeilen mit Personen-ID `stefan_l` und **Freigabe Web? = Ja**. Achtung: „Im Web veröffentlichen“ macht das gesamte Tabellenblatt öffentlich.
-
-Zusätzlich in `site/index.html` die Content-Security-Policy erweitern:
-`connect-src 'self' https://docs.google.com https://*.googleusercontent.com`
-(ohne diesen Eintrag blockiert der Browser die Abfrage; `tools/check_site.py` weist darauf hin).
-
-## Sicherheit
-
-Siehe [SECURITY.md](SECURITY.md). Vor jedem Hochladen läuft `tools/check_site.py` (lokal per Pre-Commit-Hook bzw. im Update-Skript und in GitHub Actions).
-
-## Lizenz
-
-Alle Rechte vorbehalten – siehe [LICENSE](LICENSE).
