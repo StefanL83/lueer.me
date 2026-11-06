@@ -2,6 +2,7 @@
    SITE-INHALTE – hier von Hand pflegen.
    Der Lebenslauf (Werdegang, Ausbildung, Profiltext, Links) kommt automatisch
    aus data/cv.js (erzeugt von tools/cv_sync.py) – dort NICHTS von Hand ändern.
+   Englische Fassung: data/site.en.js (gleiche Struktur) – Änderungen dort mitpflegen.
    ========================================================================== */
 window.SITE = {
   rolle: "Business Transformation, B2B-Vertrieb und KI-Qualität",
@@ -17,8 +18,9 @@ window.SITE = {
   /* Profiltext der Homepage (hat Vorrang vor dem Profiltext aus dem PDF).
      Jeder Eintrag = ein Absatz. Auf null setzen, um wieder den PDF-Text zu nutzen. */
   profil: [
-    "Vertriebs- und Prozessmanager mit über 20 Jahren Erfahrung im internationalen technischen B2B-Industrieumfeld. Erfahrung in Vertriebsinnendienst, Sales Support, Sales Operations, Key Account Management und Vertriebsleitung.",
-    "Fachliche und disziplinarische Führung globaler Teams. Steuerung internationaler Kundenbeziehungen und eines Umsatz- und Ergebnisverantwortungsbereichs bis ca. 200 Mio. €. Erfolge in Margen- und Bestandsoptimierung, Prozessentwicklung und dem Ausbau strategischer Kundenbeziehungen. Branchenbezug: Großmotoren, Energieerzeugung, Bahn, Maschinenbau, Marine sowie Engineering, Defense und Aerospace. Zertifizierter KI Consultant."
+    "Ich verbinde über 20 Jahre internationalen technischen B2B-Vertrieb mit einem klaren Blick für Prozesse und mit fundierter KI-Kompetenz. Bei Tenneco / Federal-Mogul Burscheid GmbH habe ich jede Stufe des Vertriebs selbst durchlaufen: von der Ausbildung über Sales Support und Key Account Management bis in die Vertriebsleitung. Zuletzt habe ich den weltweiten Vertrieb von Ingenieurdienstleistungen für Maschinenbau, Bahn, Defense und Aerospace neu aufgestellt.",
+    "Als Vertriebsleiter habe ich ein globales Team mit rund acht Mitarbeitenden geführt und einen Umsatz von 200 Mio. € verantwortet. Strategische Kundenbeziehungen in Europa, Asien und den USA habe ich gezielt ausgebaut.",
+    "Als zertifizierter KI Consultant bringe ich beides zusammen: Ich finde KI-Anwendungsfälle mit echtem Geschäftsnutzen, führe sie strukturiert im Unternehmen ein und achte dabei auf Qualität, Datenschutz und den EU AI Act. Wie das in der Praxis aussieht, zeigen meine Projekte."
   ],
 
   branchen: ["Großmotoren", "Energieerzeugung", "Bahn", "Maschinenbau", "Marine", "Engineering", "Defense", "Aerospace"],
@@ -28,6 +30,10 @@ window.SITE = {
 
   /* Stationen, die im PDF fehlen, aber auf der Homepage erscheinen sollen.
      Werden automatisch chronologisch in den Werdegang einsortiert. */
+  /* Status einer Weiterbildung abweichend vom PDF (Schlüssel = Anfang des Titels).
+     Kann entfallen, sobald das Master-CV-PDF den neuen Status enthält. */
+  ausbildungStatus: { "KI in Unternehmen": "abgeschlossen" },
+
   zusatzStationen: [
     {
       titel: "Berufliche Neuorientierung",
@@ -68,7 +74,8 @@ window.SITE = {
       "Markt- und Datenanalysen"
     ] },
     { gruppe: "KI & Digitalisierung", punkte: [
-      "KI-Anwendungsfälle finden und einführen",
+      "Einführung KI-gestützter Geschäftsprozesse",
+      "KI-Anwendungsfälle mit Geschäftsnutzen finden",
       "Prompting und LLM-Praxis",
       "KI-Qualität und Evaluation",
       "Wissensmanagement",

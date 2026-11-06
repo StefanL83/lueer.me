@@ -16,7 +16,7 @@
   function init() {
     document.querySelectorAll('[data-mail="write"]').forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var subject = encodeURIComponent("Kontakt über lueer.me");
+        var subject = encodeURIComponent(window.I18N ? window.I18N.t("kontakt.subject", "Kontakt über lueer.me") : "Kontakt über lueer.me");
         window.location.href = "mai" + "lto:" + address() + "?subject=" + subject;
       });
     });

@@ -14,6 +14,11 @@ site/                     ← NUR dieser Ordner wird veröffentlicht
   css/styles.css          Design-System (Farben, Typografie, Layout)
   js/app.js               rendert die Inhalte aus data/
   js/theme-toggle.js      Hell-/Dunkel-Umschalter (alle Seiten)
+  js/i18n.js              Sprachumschaltung DE/EN + alle englischen Oberflächentexte
+  js/fold.js              Aufklappbare Einträge (Hover, Klick, Tastatur, barrierearm)
+  js/lightbox.js          Bildbetrachter der Projektseiten
+  data/cv.en.js           Lebenslauf Englisch – VON HAND aus Master_CV_Stefan_Lueer_EN.docx
+  data/site.en.js         englische Fassung von site.js
   js/mail.js              E-Mail-Schutz (Adresse verschleiert)
   js/theme-init.js        Hell-/Dunkel-Modus
   data/cv.js              Lebenslauf – AUTOMATISCH aus dem PDF erzeugt
@@ -59,6 +64,13 @@ Erwartete PDF-Struktur: Abschnitte in GROSSBUCHSTABEN, Stationen als `MM/JJJJ �
 
 Werdegang und Weiterbildung werden aufklappbar dargestellt. Je Station erscheinen die ersten zwei Aufgaben und
 die ersten zwei Erfolge aus dem PDF – die wichtigsten Punkte daher im Master-CV zuerst nennen.
+
+## Englische Fassung
+
+Der Schalter „EN/DE“ oben rechts stellt die Seite um (Wahl wird im Browser gespeichert, `?lang=en` erzwingt Englisch).
+- Oberflächentexte: in `js/i18n.js` (Abschnitt `EN`); im HTML tragen die Elemente `data-i18n="schlüssel"`.
+- Lebenslauf: `data/cv.en.js` wird **nicht** automatisch erzeugt – bei Änderungen am englischen Master-CV von Hand nachziehen.
+- Eigene Inhalte: `data/site.en.js` parallel zu `data/site.js` pflegen.
 
 ## CHECK!-Demo aktualisieren
 
