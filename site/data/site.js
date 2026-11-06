@@ -96,6 +96,12 @@ window.SITE = {
       seite: "projekte/check.html"
     },
     {
+      titel: "Vertriebs-CRM – Prototyp für den B2B-Vertrieb",
+      bild: "assets/projekte/crm-mobil.webp",
+      bildAlt: "Vertriebs-CRM auf dem Smartphone: KPI-Dashboard mit Umsatz, Plan, Erwartung und Wachstum",
+      seite: "projekte/crm.html"
+    },
+    {
       titel: "Radwerk Mitte – Website vom PRD zum Prototyp",
       bild: "assets/projekte/radwerk-mobil.webp",
       bildAlt: "Website-Entwurf Radwerk Mitte auf dem Smartphone: „Räder für dein ganzes Team – mit einem Ansprechpartner vor Ort.“",

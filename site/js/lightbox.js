@@ -25,7 +25,7 @@
         '<button type="button" class="lb-btn lb-close">' + ico.close + "</button></div>" +
       '<figure class="lb-figure">' +
         '<button type="button" class="lb-btn lb-prev">' + ico.prev + "</button>" +
-        '<img alt="">' +
+        '<div class="lb-scroll" tabindex="0"><img alt=""></div>' +
         '<button type="button" class="lb-btn lb-next">' + ico.next + "</button>" +
       "</figure>" +
       '<p class="lb-caption"></p>' +
@@ -53,6 +53,9 @@
     index = (i + links.length) % links.length;
     var a = links[index], thumb = a.querySelector("img"), fig = a.closest("figure");
     var c = fig && fig.querySelector("figcaption");
+    var scroll = dlg.querySelector(".lb-scroll");
+    scroll.classList.toggle("is-tall", a.hasAttribute("data-lb-scroll"));
+    scroll.scrollTop = 0;
     img.src = a.getAttribute("href");
     img.alt = thumb ? thumb.alt : "";
     cap.textContent = c ? c.textContent : "";
@@ -79,7 +82,7 @@
   });
   /* Klick auf den dunklen Hintergrund schließt */
   dlg.addEventListener("click", function (e) {
-    if (e.target === dlg || e.target.classList.contains("lb-stage") || e.target.classList.contains("lb-figure")) dlg.close();
+    if (e.target === dlg || e.target.classList.contains("lb-stage") || e.target.classList.contains("lb-figure") || e.target.classList.contains("lb-scroll")) dlg.close();
   });
   dlg.addEventListener("close", function () { if (trigger) trigger.focus(); });
   /* Wischen auf Touch-Geräten */

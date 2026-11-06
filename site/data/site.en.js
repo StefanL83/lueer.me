@@ -66,6 +66,12 @@ window.SITE_EN = {
       seite: "projekte/check.html"
     },
     {
+      titel: "Sales CRM – prototype for B2B sales",
+      bild: "assets/projekte/crm-mobil.webp",
+      bildAlt: "Sales CRM on a smartphone: KPI dashboard with revenue, plan, expectation and growth (German user interface)",
+      seite: "projekte/crm.html"
+    },
+    {
       titel: "Radwerk Mitte – website from PRD to prototype",
       bild: "assets/projekte/radwerk-mobil.webp",
       bildAlt: "Radwerk Mitte website draft on a smartphone: “Bikes for your whole team – with one contact person on site.” (German user interface)",
