@@ -16,7 +16,6 @@ site/                     ← NUR dieser Ordner wird veröffentlicht
   data/cv.js              Lebenslauf – AUTOMATISCH aus dem PDF erzeugt
   data/site.js            Inhalte zum Pflegen (Texte, Kompetenzen, Projekte)
   assets/                 Portrait, Screenshots, Schriften
-  downloads/              Lebenslauf-PDF
   projects/check/         CHECK!-Offline-Demo (eingebettet)
 tools/
   cv_sync.py              PDF-Lebenslauf → site/data/cv.js

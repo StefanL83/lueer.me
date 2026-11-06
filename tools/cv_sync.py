@@ -1,6 +1,6 @@
 """
 CV-Sync: liest den Master-Lebenslauf (PDF) und erzeugt daraus data/cv.js fuer die Homepage.
-Ausserdem wird das PDF als Download nach downloads/ kopiert.
+Das PDF selbst wird NICHT veroeffentlicht (kein Download auf der Homepage).
 
 Nutzung:
     python tools/cv_sync.py [PFAD_ZUR_PDF]
@@ -17,7 +17,6 @@ Erwartete PDF-Struktur (wie im aktuellen Master-CV):
 import datetime as dt
 import json
 import re
-import shutil
 import sys
 from pathlib import Path
 
@@ -29,7 +28,6 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_PDF = Path.home() / "Downloads" / "Master_CV_Stefan_Lueer_DE.pdf"
 OUT_JS = ROOT / "site" / "data" / "cv.js"
-OUT_PDF = ROOT / "site" / "downloads" / "Lebenslauf_Stefan_Lueer.pdf"
 
 SECTIONS = {
     "PROFIL": "profil",
@@ -146,11 +144,6 @@ def main():
     zusatz_status(cv, dt.date.today())
     cv["stand"] = dt.datetime.fromtimestamp(pdf.stat().st_mtime).strftime("%Y-%m-%d")
     cv["quelle"] = pdf.name
-
-    OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
-    if pdf.resolve() != OUT_PDF.resolve():
-        shutil.copy2(pdf, OUT_PDF)
-    cv["pdf"] = "downloads/" + OUT_PDF.name
 
     OUT_JS.parent.mkdir(parents=True, exist_ok=True)
     OUT_JS.write_text(

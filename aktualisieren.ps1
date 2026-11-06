@@ -15,7 +15,7 @@ if ($LASTEXITCODE -ne 0) { throw "Sicherheits-/Qualitätsprüfung fehlgeschlagen
 
 # Falls die Homepage per Git (GitHub Pages) veröffentlicht ist: Änderungen hochladen
 if (Test-Path ".git") {
-  git add site/data/cv.js site/downloads/
+  git add site/data/cv.js
   git diff --cached --quiet
   if ($LASTEXITCODE -ne 0) {
     git commit -m "Lebenslauf automatisch aktualisiert ($(Get-Date -Format 'yyyy-MM-dd'))"

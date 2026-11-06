@@ -185,6 +185,5 @@ window.CV = {
     "Pragmatischer, ergebnisorientierter Führungsstil"
   ],
   "stand": "2026-11-05",
-  "quelle": "Master_CV_Stefan_Lueer_DE.pdf",
-  "pdf": "downloads/Lebenslauf_Stefan_Lueer.pdf"
+  "quelle": "Master_CV_Stefan_Lueer_DE.pdf"
 };

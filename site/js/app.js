@@ -20,7 +20,6 @@
   }
 
   /* ---------- Einfache Bindungen ---------- */
-  if (CV.pdf) $$('[data-link="pdf"]').forEach(function (a) { a.href = CV.pdf; });
 
   var binds = { rolle: SITE.rolle, schwerpunkt: SITE.schwerpunkt };
   $$("[data-bind]").forEach(function (n) {

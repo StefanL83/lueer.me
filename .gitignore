@@ -19,3 +19,7 @@ desktop.ini
 .env.*
 *.pem
 *.key
+
+# Lebenslauf-PDF wird bewusst nicht veroeffentlicht
+site/downloads/
+site/**/*.pdf
