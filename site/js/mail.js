@@ -4,7 +4,7 @@
    - Ein mailto:-Link entsteht nur im Moment des Klicks und steht nie im Seitenquelltext. */
 (function () {
   "use strict";
-  var parts = ["cmVldWwubmFmZXRz", "bW9jLmxpYW1n"]; // kodiert & umgedreht
+  var parts = ["dGthdG5vaw==", "ZW0ucmVldWw="]; // kodiert & umgedreht
 
   function decode(p) {
     try { return atob(p).split("").reverse().join(""); } catch (e) { return ""; }

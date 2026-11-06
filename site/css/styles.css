@@ -398,3 +398,6 @@ main:focus { outline: none; }
   .hero, .contact, .site-footer { background: #fff !important; color: #000 !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* Klickschutz: in fremde Rahmen eingebettet → nichts anzeigen (siehe js/theme-init.js) */
+html.is-framed body { display: none !important; }

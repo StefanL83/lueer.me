@@ -39,6 +39,20 @@ Legt fest, dass nur Let's Encrypt (wird von GitHub Pages genutzt) Zertifikate f�
 Hinweis: Falls IONOS-Dienste (z. B. SSL-Zertifikat aus dem IONOS-Paket) für `lueer.me` genutzt werden,
 zusätzlich deren Aussteller eintragen – sonst CAA weglassen.
 
-## 6. E-Mail-Absender schützen (optional)
-Aktuell ist `_dmarc.lueer.me` auf `p=none` (nur beobachten). Wenn alle legitimen Absender (IONOS) per SPF/DKIM
-abgedeckt sind, schrittweise auf `p=quarantine` und später `p=reject` erhöhen – das erschwert E-Mail-Fälschungen im Namen von lueer.me.
+## 6. E-Mail-Fälschungsschutz (DMARC)
+IONOS-Standard ist `_dmarc` als CNAME auf `dmarc.ionos.de` (`p=none` = nur beobachten, keine Wirkung).
+SPF (`include:_spf-eu.ionos.com`) und DKIM (`s1-/s2-ionos._domainkey`) sind vorhanden, daher eigene Richtlinie:
+
+1. CNAME `_dmarc` → `dmarc.ionos.de` löschen
+2. Neu anlegen:
+
+| Typ | Hostname | Wert |
+|---|---|---|
+| TXT | _dmarc | v=DMARC1; p=quarantine; adkim=r; aspf=r |
+
+Gefälschte Mails im Namen von lueer.me landen damit beim Empfänger im Spam. Nach einigen Wochen ohne Probleme
+auf `p=reject` erhöhen. Achtung: Wer künftig über andere Dienste (Newsletter-Tool, Formular-Dienst, iCloud) als
+@lueer.me versendet, muss diese vorher in SPF/DKIM aufnehmen – sonst landen auch echte Mails im Spam.
+
+## 7. DNSSEC
+In IONOS aktiviert (schützt vor gefälschten DNS-Antworten).

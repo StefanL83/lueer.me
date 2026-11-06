@@ -25,10 +25,14 @@ Maschinenlesbar auch unter https://lueer.me/.well-known/security.txt (RFC 9116).
 - Secret-Scanning mit Push-Schutz, Dependabot-Sicherheitswarnungen, CodeQL-Codeanalyse
 - Deployment-Umgebung `github-pages` nur aus `main`
 
+**Domain (IONOS)**
+- DNSSEC aktiv, CAA beschränkt Zertifikate auf Let's Encrypt, DMARC `p=quarantine` (siehe `docs/DNS-IONOS.md`)
+
 ## Bekannte Grenzen
 
-GitHub Pages erlaubt keine eigenen HTTP-Header. Daher fehlen `frame-ancestors`/`X-Frame-Options`
-(Clickjacking-Schutz), `Permissions-Policy` und HSTS mit `includeSubDomains`/`preload`.
+GitHub Pages erlaubt keine eigenen HTTP-Header. Daher fehlen `frame-ancestors`/`X-Frame-Options`,
+`Permissions-Policy` und HSTS mit `includeSubDomains`/`preload`.
+Ersatz: Klickschutz per Skript (`js/theme-init.js`) – blendet die Seite in fremden Rahmen aus.
 Bewertung: geringes Risiko, da die Seite keine Aktionen, Logins oder Formulare anbietet.
 Sollte sich das ändern, die Seite hinter einen Proxy mit Header-Unterstützung (z. B. Cloudflare) legen.
 
