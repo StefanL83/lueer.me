@@ -9,6 +9,7 @@ Statische Website ohne Build-Schritt, veröffentlicht über GitHub Pages unter *
 site/                     ← NUR dieser Ordner wird veröffentlicht
   index.html              Startseite
   datenschutz.html, 404.html, robots.txt, sitemap.xml, favicon.svg
+  .well-known/security.txt  Kontakt für Sicherheitsmeldungen (jährlich verlängern)
   css/styles.css          Design-System (Farben, Typografie, Layout)
   js/app.js               rendert die Inhalte aus data/
   js/mail.js              E-Mail-Schutz (Adresse verschleiert)
@@ -22,6 +23,7 @@ tools/
   check_site.py           Qualitäts- & Sicherheitsprüfung
 docs/DNS-IONOS.md         Domain-Einrichtung
 .github/workflows/        Prüfung + automatisches Veröffentlichen
+.githooks/pre-commit      Prüfung vor jedem lokalen Commit
 aktualisieren.ps1         Lebenslauf aktualisieren & hochladen (ein Befehl)
 ```
 
@@ -55,20 +57,31 @@ Erwartete PDF-Struktur: Abschnitte in GROSSBUCHSTABEN, Stationen als `MM/JJJJ �
 
 Änderungen hochladen:
 ```powershell
-python tools/check_site.py
 git add -A
-git commit -m "Beschreibung der Änderung"
+git commit -m "Beschreibung der Änderung"   # Prüfung läuft automatisch (Pre-Commit-Hook)
 git push
 ```
+
+Einmalig nach einem frischen `git clone` den Prüf-Hook aktivieren:
+```powershell
+git config core.hooksPath .githooks
+```
+
+Jeder Stand ist in der Git-Historie auf GitHub gesichert. Ältere Stände ansehen: `git log`,
+eine Änderung rückgängig machen: `git revert <commit>` und `git push` (die Seite wird automatisch neu veröffentlicht).
 
 ## Kompetenzen live aus Google Sheets (optional)
 
 Sheet über *Datei › Freigeben › Im Web veröffentlichen* als **CSV** veröffentlichen und die URL in `kompetenzen.sheetCsvUrl` eintragen.
 Angezeigt werden nur Zeilen mit Personen-ID `stefan_l` und **Freigabe Web? = Ja**. Achtung: „Im Web veröffentlichen“ macht das gesamte Tabellenblatt öffentlich.
 
+Zusätzlich in `site/index.html` die Content-Security-Policy erweitern:
+`connect-src 'self' https://docs.google.com https://*.googleusercontent.com`
+(ohne diesen Eintrag blockiert der Browser die Abfrage; `tools/check_site.py` weist darauf hin).
+
 ## Sicherheit
 
-Siehe [SECURITY.md](SECURITY.md). Vor jedem Hochladen läuft `tools/check_site.py` (lokal im Update-Skript und in GitHub Actions).
+Siehe [SECURITY.md](SECURITY.md). Vor jedem Hochladen läuft `tools/check_site.py` (lokal per Pre-Commit-Hook bzw. im Update-Skript und in GitHub Actions).
 
 ## Lizenz
 

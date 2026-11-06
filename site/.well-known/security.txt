@@ -1,0 +1,6 @@
+# Sicherheitshinweise zu lueer.me (RFC 9116)
+Contact: https://github.com/StefanL83/lueer.me/security/advisories/new
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: de, en
+Canonical: https://lueer.me/.well-known/security.txt
+Policy: https://github.com/StefanL83/lueer.me/blob/main/SECURITY.md

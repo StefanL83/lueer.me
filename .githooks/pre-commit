@@ -1,0 +1,6 @@
+#!/bin/sh
+# Lokale Prüfung vor jedem Commit (aktivieren einmalig mit: git config core.hooksPath .githooks)
+python tools/check_site.py || python3 tools/check_site.py || {
+  echo "Commit abgebrochen: Qualitäts-/Sicherheitsprüfung fehlgeschlagen." >&2
+  exit 1
+}

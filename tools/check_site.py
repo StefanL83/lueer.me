@@ -8,9 +8,14 @@ Prüft:
   4. Externe Links mit target="_blank" haben rel="noopener noreferrer"
   5. Alle lokalen Verweise (href/src) zeigen auf existierende Dateien
   6. Keine verdächtigen Geheimnisse (API-Keys, Tokens)
+  7. Keine Dokumente/Archive/Schlüssel im Veröffentlichungsordner (z. B. Lebenslauf-PDF, .env)
+  8. Hauptseiten: CSP ohne 'unsafe-inline'/'unsafe-eval', Referrer-Policy gesetzt
+  9. security.txt vorhanden und nicht (bald) abgelaufen
+ 10. Ist eine Google-Sheets-URL eingetragen, erlaubt die CSP (connect-src) genau diese Quelle
 
 Nutzung:  python tools/check_site.py      (Exit-Code 1 bei Fehlern)
 """
+import datetime as dt
 import re
 import sys
 from pathlib import Path
@@ -32,7 +37,12 @@ def rel(p: Path) -> str:
     return str(p.relative_to(SITE.parent)).replace("\\", "/")
 
 
+FORBIDDEN_EXT = {".pdf", ".doc", ".docx", ".odt", ".xls", ".xlsx", ".ods", ".csv", ".zip", ".7z", ".rar",
+                 ".env", ".pem", ".key", ".p12", ".pfx", ".bak", ".sql", ".py", ".ps1", ".log"}
+
 for f in sorted(SITE.rglob("*")):
+    if f.is_file() and (f.suffix.lower() in FORBIDDEN_EXT or f.name.startswith(".env")):
+        errors.append(f"{rel(f)}: Dateityp darf nicht veröffentlicht werden")
     if not f.is_file() or f.suffix.lower() not in TEXT_EXT:
         continue
     text = f.read_text(encoding="utf-8", errors="replace")
@@ -50,7 +60,12 @@ for f in sorted(SITE.rglob("*")):
         is_demo = DEMO_DIR in f.parents
         if 'http-equiv="Content-Security-Policy"' not in text:
             errors.append(f"{rel(f)}: keine Content-Security-Policy")
+        if '<meta name="referrer"' not in text:
+            errors.append(f"{rel(f)}: keine Referrer-Policy (meta name=\"referrer\")")
         if not is_demo:
+            csp = re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"', text)
+            if csp and re.search(r"'unsafe-(inline|eval)'", csp.group(1)):
+                errors.append(f"{rel(f)}: CSP erlaubt 'unsafe-inline' oder 'unsafe-eval'")
             for m in re.finditer(r"<script(?![^>]*\bsrc=)([^>]*)>", text):
                 if "application/ld+json" not in m.group(1):
                     errors.append(f"{rel(f)}: Inline-Skript gefunden (verstößt gegen CSP)")
@@ -71,6 +86,28 @@ for f in sorted(SITE.rglob("*")):
                 target = target / "index.html"
             if not target.exists():
                 errors.append(f"{rel(f)}: Verweis ins Leere: {url}")
+
+# security.txt (RFC 9116): muss existieren und darf nicht ablaufen
+sec = SITE / ".well-known" / "security.txt"
+if not sec.exists():
+    errors.append("site/.well-known/security.txt fehlt")
+else:
+    m = re.search(r"^Expires:\s*(\d{4}-\d{2}-\d{2})", sec.read_text(encoding="utf-8"), re.M)
+    if not m:
+        errors.append("security.txt: Feld 'Expires' fehlt")
+    elif dt.date.fromisoformat(m.group(1)) - dt.date.today() < dt.timedelta(days=30):
+        errors.append(f"security.txt: läuft am {m.group(1)} ab – Datum um ein Jahr verlängern")
+
+# Google-Sheets-Anbindung und CSP müssen zusammenpassen
+site_js = (SITE / "data" / "site.js").read_text(encoding="utf-8")
+sheet = re.search(r"""sheetCsvUrl\s*:\s*["'](https://[^"']+)["']""", site_js)
+index_csp = re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"', (SITE / "index.html").read_text(encoding="utf-8"))
+if sheet and index_csp:
+    origin = "https://" + urlparse(sheet.group(1)).netloc
+    connect = re.search(r"connect-src([^;]*)", index_csp.group(1))
+    if not connect or origin not in connect.group(1).split():
+        errors.append(f"index.html: sheetCsvUrl gesetzt, aber CSP connect-src erlaubt {origin} nicht "
+                      "(zusätzlich https://*.googleusercontent.com für die Weiterleitung eintragen)")
 
 if errors:
     print("PRÜFUNG FEHLGESCHLAGEN:")

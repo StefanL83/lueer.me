@@ -159,6 +159,9 @@
       return r[c.id] && personOk && (r[c.web] || "").trim().toLowerCase() === "ja";
     }).map(function (r) {
       return { id: r[c.id], gruppe: r[c.gruppe], name: r[c.name], stufe: (r[c.stufe] || "").trim(), beleg: r[c.beleg] };
+    }).filter(function (k) {
+      /* Externe Daten: nur bekannte Einstufungen übernehmen (sonst bricht die Darstellung) */
+      return Object.prototype.hasOwnProperty.call(stufeInfo, k.stufe);
     });
   }
 
@@ -180,7 +183,10 @@
   (SITE.projekte || []).forEach(function (p) {
     var art = el("article", "card projekt reveal");
     var li = function (arr) { return (arr || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); };
-    var linkHtml = (p.links || []).map(function (l) {
+    var linkHtml = (p.links || []).filter(function (l) {
+      /* Nur https- oder relative Ziele zulassen (kein javascript:, data: usw.) */
+      return typeof l.url === "string" && (/^https:\/\//i.test(l.url) || !/^[a-z][a-z0-9+.-]*:/i.test(l.url));
+    }).map(function (l) {
       var external = /^https?:/.test(l.url);
       return '<a class="btn ' + (l.typ === "primaer" ? "btn-accent" : "btn-secondary") + '" href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">' +
         esc(l.label) + extIcon + '<span class="sr-only"> (öffnet in neuem Tab' + (external ? ", externe Seite" : "") + ")</span></a>";
