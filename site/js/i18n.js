@@ -97,7 +97,37 @@
     "check.demo.full": "Demo in full screen",
     "check.tags": "Keywords",
     "check.tag1": "Product management",
-    "check.tag3": "Quality assurance"
+    "check.tag3": "Quality assurance",
+
+    /* Radwerk-Seite */
+    "rw.meta.title": "Radwerk Mitte – website from PRD to prototype · Project by Stefan Lüer",
+    "rw.meta.desc": "Radwerk Mitte: from a customer interview to PRD, implementation plan, tech spec, test plan and a clickable website prototype with leasing calculator and chat assistant. Training project by Stefan Lüer.",
+    "rw.status": "Training project · fictitious client",
+    "rw.zeit": "10/2026",
+    "rw.kurs": "Agentic Engineering course (BTA)",
+    "rw.title": "Radwerk Mitte – website from PRD to prototype",
+    "rw.sub": "A customer interview turns into requirements, a plan, a technical specification, a test plan and a clickable website draft – for a bicycle retailer that wants to grow with company bike leasing.",
+    "rw.rolle": "<strong>My role:</strong> requirements and PRD, implementation and test planning, AI-assisted prototype development with Claude Code, chat assistant integration via n8n.",
+    "rw.ausgangslage.text": "Radwerk Mitte (Kassel and Göttingen, around 120 employees) wants to grow by about 15% next year – mainly through bike leasing for companies, hospitals and municipalities. The current website looks outdated, the B2B offer is barely visible and enquiries only arrive by e-mail.",
+    "rw.v1": "PRD from the customer interview: goal, target group, non-goals, assumptions and acceptance criteria – with what was said clearly separated from what was assumed",
+    "rw.v2": "Uncovered contradictions between several PRD drafts, e.g. the workshop as a growth driver despite a known workshop bottleneck",
+    "rw.v3": "Aligned the design guideline with the requirement “keep blue and orange”",
+    "rw.v4": "Implementation plan in six phases with approval gates, technology-neutral tech spec with architecture options and data model",
+    "rw.v5": "Test plan with ten test cases along the acceptance criteria",
+    "rw.e1": "Responsive website draft with B2B section, leasing calculator, FAQ and enquiry form with categories",
+    "rw.e2": "Sub-page for care services as a shift-work target group",
+    "rw.e3": "Chat assistant “Radislav” integrated for testing via n8n",
+    "rw.e4": "All placeholders (terms, contact data, references) visibly marked as “example”",
+    "rw.cap1": "Home page focused on business customers",
+    "rw.cap2": "Leasing calculator (placeholder formula, clearly marked)",
+    "rw.cap3": "Sub-page for care services",
+    "rw.cap4": "Chat assistant “Radislav” (n8n)",
+    "rw.alt1": "Home page of the draft: “Bikes for your whole team – with one contact person on site”, next to an example of a large order for 80 employees (German user interface)",
+    "rw.alt2": "Leasing calculator with sliders for bike price and gross salary and the estimated monthly cost (German user interface)",
+    "rw.alt3": "Sub-page “Bike leasing for teams in shift work” for care services (German user interface)",
+    "rw.alt4": "Open chat assistant “Radislav Radwerk – your digital bike buddy” on the home page (German user interface)",
+    "rw.note": "Radwerk Mitte is a fictitious company from a course exercise. All content in the draft is example content. Screenshots show the German user interface.",
+    "rw.tag3": "Test planning"
   };
 
   var root = document.documentElement;

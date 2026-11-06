@@ -9,7 +9,7 @@ window.SITE_EN = {
 
   kennzahlen: [
     { wert: "20+", label: "years of international technical B2B sales" },
-    { wert: "≈ €200m", label: "revenue and earnings responsibility" }
+    { wert: "≈ €200m", label: "revenue and earnings responsibility" }
   ],
 
   profil: [
@@ -64,6 +64,12 @@ window.SITE_EN = {
       bild: "assets/projekte/check-irrefuehrend.webp",
       bildAlt: "CHECK! app: the claim that unemployment in Germany fell to a historic low in 2025 is classified as “Misleading” (German user interface)",
       seite: "projekte/check.html"
+    },
+    {
+      titel: "Radwerk Mitte – website from PRD to prototype",
+      bild: "assets/projekte/radwerk-mobil.webp",
+      bildAlt: "Radwerk Mitte website draft on a smartphone: “Bikes for your whole team – with one contact person on site.” (German user interface)",
+      seite: "projekte/radwerk.html"
     }
   ]
 };

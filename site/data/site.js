@@ -12,7 +12,7 @@ window.SITE = {
   /* Kennzahlen im Hero (Quelle: Lebenslauf) */
   kennzahlen: [
     { wert: "20+", label: "Jahre internationaler technischer B2B-Vertrieb" },
-    { wert: "≈ 200 Mio. €", label: "Umsatz- und Ergebnisverantwortung" }
+    { wert: "≈ 200 Mio. €", label: "Umsatz- und Ergebnis­verantwortung" }
   ],
 
   /* Profiltext der Homepage (hat Vorrang vor dem Profiltext aus dem PDF).
@@ -94,6 +94,12 @@ window.SITE = {
       bild: "assets/projekte/check-irrefuehrend.webp",
       bildAlt: "CHECK!-App: Die Aussage „Die Arbeitslosenquote in Deutschland ist 2025 auf einen historischen Tiefstand gefallen“ wird als „Irreführend“ eingeordnet",
       seite: "projekte/check.html"
+    },
+    {
+      titel: "Radwerk Mitte – Website vom PRD zum Prototyp",
+      bild: "assets/projekte/radwerk-mobil.webp",
+      bildAlt: "Website-Entwurf Radwerk Mitte auf dem Smartphone: „Räder für dein ganzes Team – mit einem Ansprechpartner vor Ort.“",
+      seite: "projekte/radwerk.html"
     }
   ]
 };
